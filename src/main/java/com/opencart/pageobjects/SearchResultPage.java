@@ -1,16 +1,20 @@
 package com.opencart.pageobjects;
 
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.opencart.base.BasePage;
+import com.opencart.utilities.LoggerUtility;
+import com.opencart.utilities.WaitUtility;
 
-public class SearchResultPage extends BasePage{
+public class SearchResultPage extends BasePage {
 
-   
-    // Constructor
+    private static final Logger logger =
+            LoggerUtility.getLogger();
+
     public SearchResultPage(WebDriver driver) {
-    	super(driver);
+        super(driver);
     }
 
     // Locator
@@ -18,14 +22,25 @@ public class SearchResultPage extends BasePage{
 
     // Verify Product is Displayed
     public boolean isProductDisplayed() {
-        return driver.findElement(product).isDisplayed();
+
+        logger.info("Checking whether MacBook product is displayed");
+
+        boolean displayed =
+                WaitUtility.waitForVisibility(driver, product)
+                           .isDisplayed();
+
+        logger.info("MacBook product displayed: " + displayed);
+
+        return displayed;
     }
 
     // Click Product
     public void clickProduct() {
-        driver.findElement(product).click();
+
+        logger.info("Clicking MacBook product");
+
+        WaitUtility.waitForClickable(driver, product).click();
+
+        logger.info("MacBook product clicked successfully");
     }
-
 }
-
-

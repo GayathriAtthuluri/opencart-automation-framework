@@ -3,10 +3,14 @@ package com.opencart.pageobjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import org.apache.logging.log4j.Logger;
+import com.opencart.utilities.LoggerUtility;
+import com.opencart.utilities.WaitUtility;
 import com.opencart.base.BasePage;
 
 public class ProductPage extends BasePage {
-	
+	 private static final Logger logger =
+	            LoggerUtility.getLogger();
 	
 	public ProductPage(WebDriver driver)
 	{
@@ -25,20 +29,35 @@ public class ProductPage extends BasePage {
 	
 	public String getProductName()
 	{
-		return driver.findElement(productName).getText();
+		logger.info("Getting product name");
+
+        String name = WaitUtility.waitForVisibility(driver, productName)
+                .getText();
+
+        logger.info("Product name: " + name);
+
+        return name;
 	}
 	
 	// Enter Quantity
 	
 	public void enterQuantity(String quantity)
 	{
-		driver.findElement(quantityTextBox).clear();
-		driver.findElement(addToCartButton).sendKeys(quantity );
+		 logger.info("Entering product quantity: " + quantity);
+
+	        WaitUtility.waitForVisibility(driver, quantityTextBox).clear();
+
+	        WaitUtility.waitForVisibility(driver, quantityTextBox)
+	                .sendKeys(quantity);
 	}
 	
 	public void clickAddtoCart()
 	{
-		driver.findElement(addToCartButton).click();
+		logger.info("Clicking Add to Cart button");
+
+        WaitUtility.waitForClickable(driver, addToCartButton).click();
+
+        logger.info("Product added to cart successfully");
 	}
 	
 	

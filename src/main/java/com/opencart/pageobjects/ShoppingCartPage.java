@@ -2,16 +2,19 @@ package com.opencart.pageobjects;
 
 import java.time.Duration;
 
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.opencart.base.BasePage;
+import com.opencart.utilities.LoggerUtility;
 import com.opencart.utilities.WaitUtility;
 
 public class ShoppingCartPage extends BasePage{
-	
+	private static final Logger logger =
+            LoggerUtility.getLogger();
 	public ShoppingCartPage(WebDriver driver)
 	{
 		super(driver);
@@ -27,33 +30,62 @@ public class ShoppingCartPage extends BasePage{
 	
 	 // Click Shopping Cart link
     public void clickShoppingCart() {
-        driver.findElement(shoppingCartLink).click();
+    	 logger.info("Clicking Shopping Cart");
+
+         driver.findElement(shoppingCartLink).click();
+
+         logger.info("Shopping Cart page opened");
+        
     }
 
 	    // Verify Product
 	    public boolean isProductAdded(String product) {
-	        return driver.findElement(productName).isDisplayed();
+	    	logger.info("Checking whether " + product + " is added to cart");
+
+	        boolean displayed = driver.findElement(productName).isDisplayed();
+
+	        logger.info("Product displayed in cart: " + displayed);
+
+	        return displayed;
 	    }
 	 
 	 //  	Get Quantity 
 	 
 	 public String getQuantity() {
-		 return driver.findElement(quantityTextBox).getAttribute("value");
+		 logger.info("Getting product quantity");
+
+	        String quantity = driver.findElement(quantityTextBox)
+	                .getAttribute("value");
+
+	        logger.info("Product quantity: " + quantity);
+
+	        return quantity;
 	 }
 	 
 	 // Remove Product
 	 
 	 public void removeProduct()
 	 {
-		 WaitUtility.waitForClickable(driver,removeButton).click();
+		 logger.info("Removing product from cart");
+
+	        // Keep the existing working wait
+	        WaitUtility.waitForClickable(driver, removeButton).click();
+
+	        logger.info("Product removed from cart");
 	 }
 	 
 	 // Empty message is Displayed
 	 
 	 public boolean isCartEmpty() {
-		 WaitUtility.waitForVisibility(driver,emptyCartMessage);
+		 logger.info("Checking whether cart is empty");
 
-		    return driver.findElement(emptyCartMessage).isDisplayed();
+	        WaitUtility.waitForVisibility(driver, emptyCartMessage);
+
+	        boolean empty = driver.findElement(emptyCartMessage).isDisplayed();
+
+	        logger.info("Cart empty: " + empty);
+
+	        return empty;
 		}
 
 }

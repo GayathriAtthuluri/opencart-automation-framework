@@ -1,6 +1,7 @@
 package com.opencart.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.opencart.base.BaseTest;
@@ -8,6 +9,7 @@ import com.opencart.pageobjects.AccountPage;
 import com.opencart.pageobjects.HomePage;
 import com.opencart.pageobjects.LoginPage;
 import com.opencart.utilities.ConfigReader;
+@Listeners(TestListener.class)
 
 public class LoginTest extends BaseTest {
 

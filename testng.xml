@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="OpenCart Suite">
+
+    <listeners>
+        <listener class-name="com.opencart.tests.TestListener"/>
+    </listeners>
+
+    <test name="OpenCart Tests">
+
+        <classes>
+            
+                  <class name="com.opencart.tests.RegisterTest"/>
+                  <class name="com.opencart.tests.LoginTest"/>
+                  <class name="com.opencart.tests.SearchTest"/>
+                  <class name="com.opencart.tests.AddToCartTest"/>
+                  <class name="com.opencart.tests.RemoveProductTest"/>
+                  <class name="com.opencart.tests.LogoutTest"/>
+                  <class name="com.opencart.tests.E2ETest"/>
+          
+        </classes>
+
+    </test>
+
+</suite>

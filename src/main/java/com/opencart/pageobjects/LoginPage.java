@@ -4,10 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.opencart.base.BasePage;
+import org.apache.logging.log4j.Logger;
+import com.opencart.utilities.LoggerUtility;
 
 public class LoginPage extends BasePage {
 
-	
+	 private static final Logger logger =
+	            LoggerUtility.getLogger();
 	public LoginPage(WebDriver driver)
 	{
 		super(driver);
@@ -23,25 +26,30 @@ public class LoginPage extends BasePage {
     
     public void enterEmail(String email)
     {
+    	logger.info("Entering email");
     	driver.findElement(emailTextBox).sendKeys(email);
     }
     
     public void enterPassword(String password)
     {
+    	 logger.info("Entering password");
     	driver.findElement(passwordTextBox).sendKeys(password);
     }
     
     public void clickLogin()
     {
+    	 logger.info("Clicking Login button");
     	driver.findElement(loginButton).click();
     }
     
     
     public void login(String email, String password)
     {
+    	 logger.info("Starting login");
     	enterEmail(email);
     	enterPassword(password);
     	clickLogin();
+    	logger.info("Login action completed");
     	
     }
 	

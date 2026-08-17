@@ -9,7 +9,6 @@ import com.opencart.pageobjects.HomePage;
 import com.opencart.pageobjects.LoginPage;
 import com.opencart.pageobjects.LogoutPage;
 import com.opencart.utilities.ConfigReader;
-
 public class LogoutTest extends BaseTest {
 
     @Test

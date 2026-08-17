@@ -16,6 +16,9 @@ logs/
 # TestNG
 test-output/
 
+# Extent Reports
+Reports/
+
 # OS
 .DS_Store
 Thumbs.db
