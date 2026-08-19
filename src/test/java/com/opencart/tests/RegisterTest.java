@@ -10,26 +10,44 @@ import com.opencart.pageobjects.RegistrationSuccessPage;
 
 public class RegisterTest extends BaseTest {
 
-    @Test
-    public void verifyUserRegistration() {
+    @Test(dataProvider = "registerData",
+          dataProviderClass = RegisterDataProvider.class)
+    public void verifyUserRegistration(
+            String firstName,
+            String lastName,
+            String email,
+            String phone,
+            String password) {
 
+        // Print test data to verify DataProvider
+        System.out.println(
+                firstName + " | " +
+                lastName + " | " +
+                email + " | " +
+                phone + " | " +
+                password);
+
+        // Navigate to Register page
         HomePage home = new HomePage(driver);
         home.navigateToRegisterPage();
 
+        // Create Register Page object
         RegisterPage register = new RegisterPage(driver);
 
-        String email = "user" + System.currentTimeMillis() + "@gmail.com";
-
+        // Register user using DataProvider data
         register.registerUser(
-                "David",
-                "Miller",
+                firstName,
+                lastName,
                 email,
-                "9876543210",
-                "Password@123");
+                phone,
+                password);
 
+        // Verify registration success
         RegistrationSuccessPage success =
                 new RegistrationSuccessPage(driver);
 
-        Assert.assertTrue(success.isRegistrationSuccessful());
+        Assert.assertTrue(
+                success.isRegistrationSuccessful(),
+                "Registration was not successful");
     }
 }
