@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<suite name="OpenCart Suite">
+<suite name="OpenCart Suite" parallel="classes" thread-count="3">
 
     <listeners>
+
         <listener class-name="com.opencart.tests.TestListener"/>
+
     </listeners>
 
     <test name="OpenCart Tests">
 
+        <parameter name="browser" value="edge"/>
+
         <classes>
-            
-                  <class name="com.opencart.tests.RegisterTest"/>
-                  <class name="com.opencart.tests.LoginTest"/>
-                  <class name="com.opencart.tests.SearchTest"/>
-                  <class name="com.opencart.tests.AddToCartTest"/>
-                  <class name="com.opencart.tests.RemoveProductTest"/>
-                  <class name="com.opencart.tests.LogoutTest"/>
-                  <class name="com.opencart.tests.E2ETest"/>
-          
+
+            <class name="com.opencart.tests.RegisterTest"/>
+            <class name="com.opencart.tests.LoginTest"/>
+            <class name="com.opencart.tests.SearchTest"/>
+            <class name="com.opencart.tests.AddToCartTest"/>
+            <class name="com.opencart.tests.RemoveProductTest"/>
+            <class name="com.opencart.tests.LogoutTest"/>
+            <class name="com.opencart.tests.E2ETest"/>
+
         </classes>
 
     </test>

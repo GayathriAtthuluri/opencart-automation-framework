@@ -4,43 +4,45 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 import com.opencart.driver.DriverFactory;
 import com.opencart.utilities.ConfigReader;
 import com.opencart.utilities.LoggerUtility;
 
 public class BaseTest {
-	
-	protected WebDriver driver;
-	private static final Logger logger =
-	        LoggerUtility.getLogger();
-	
-	@BeforeMethod
-	public void setup() {
 
-	    logger.info("Starting browser setup");
+    protected WebDriver driver;
 
-	    driver = DriverFactory.getDriver();
+    private static final Logger logger =
+            LoggerUtility.getLogger();
 
-	    logger.info("Browser launched successfully");
+    @BeforeMethod
+    @Parameters("browser")
+    public void setup(String browser) {
 
-	    driver.get(ConfigReader.getProperty("url"));
+        logger.info("Starting browser setup");
 
-	    logger.info("Navigated to OpenCart application");
-	}
-	@AfterMethod
-	public void teardown() {
+        driver = DriverFactory.getDriver(browser);
 
-	    logger.info("Closing browser");
+        logger.info("Browser launched successfully");
 
-	    DriverFactory.quitDriver();
+        driver.get(ConfigReader.getProperty("url"));
 
-	    logger.info("Browser closed successfully");
-	}
-	
-	
-	public WebDriver getDriver()
-	{
-		return driver;
-	}
+        logger.info("Navigated to OpenCart application");
+    }
+
+    @AfterMethod
+    public void teardown() {
+
+        logger.info("Closing browser");
+
+        DriverFactory.quitDriver();
+
+        logger.info("Browser closed successfully");
+    }
+
+    public WebDriver getDriver() {
+        return driver;
+    }
 }
