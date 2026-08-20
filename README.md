@@ -52,3 +52,32 @@ Passed: 9
 Failed: 0
 Skipped: 0
 
+## Project Structure
+
+```text
+src/main/java
+    base
+    driver
+    pageobjects
+    utilities
+
+src/test/java
+    com.opencart.tests
+
+test-data
+    TestData.xlsx
+
+pom.xml
+testng.xml
+
+## How to Run
+
+1. Import the project as a Maven project.
+2. Update Maven dependencies.
+3. Open `testng.xml`.
+4. Right-click → Run As → TestNG Suite.
+
+## Author
+
+**Gayathri Atthuluri**
+
