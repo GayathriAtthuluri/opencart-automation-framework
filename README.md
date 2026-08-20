@@ -46,38 +46,32 @@ Selenium automation framework for testing the OpenCart application using Java, S
 
 The framework supports parallel execution using TestNG.
 
-```text
-Total Tests: 9
-Passed: 9
-Failed: 0
-Skipped: 0
+- Total Tests: 9
+- Passed: 9
+- Failed: 0
+- Skipped: 0
 
 ## Project Structure
 
-```text
-src/main/java
-    base
-    driver
-    pageobjects
-    utilities
-
-src/test/java
-    com.opencart.tests
-
-test-data
-    TestData.xlsx
-
-pom.xml
-testng.xml
+- `src/main/java`
+  - `base`
+  - `driver`
+  - `pageobjects`
+  - `utilities`
+- `src/test/java`
+  - `com.opencart.tests`
+- `test-data`
+  - `TestData.xlsx`
+- `pom.xml`
+- `testng.xml`
 
 ## How to Run
 
 1. Import the project as a Maven project.
 2. Update Maven dependencies.
 3. Open `testng.xml`.
-4. Right-click → Run As → TestNG Suite.
+4. Right-click → **Run As → TestNG Suite**.
 
 ## Author
 
 **Gayathri Atthuluri**
-
