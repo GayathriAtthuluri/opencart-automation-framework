@@ -52,6 +52,10 @@ Passed: 9
 Failed: 0
 Skipped: 0
 
+
+## Project Structure
+
+```text
 src/main/java
     base
     driver
@@ -66,7 +70,8 @@ test-data
 
 pom.xml
 testng.xml
+```
 
 ## Author
 
-**Gayathri Atthuluri**
+Gayathri Atthuluri
