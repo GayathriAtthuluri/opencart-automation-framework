@@ -52,21 +52,3 @@ Passed: 9
 Failed: 0
 Skipped: 0
 
-## Project Structure
-src/main/java
-    base
-    driver
-    pageobjects
-    utilities
-
-src/test/java
-    com.opencart.tests
-
-test-data
-    TestData.xlsx
-
-pom.xml
-testng.xml
-
-## Author
-Gayathri Atthuluri
